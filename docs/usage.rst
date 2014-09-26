@@ -7,7 +7,7 @@
 Usage
 *****
 
-**epaster** can only really be used within its virtual environment, so you must remember to enable it first: ::
+**Epaster** can only really be used within its virtual environment, so you must remember to enable it first: ::
 
     cd /home/emencia/epaster
     source bin/active
@@ -31,14 +31,14 @@ will display a list of available project types which you can create: ::
 Create a new project
 ====================
 
-The **epaster** tool is an interactive command. When launched, some questions will be asked for the selection of components and options to be used within the project: ::
+The **Epaster** tool is an interactive command. When launched, some questions will be asked for the selection of components and options to be used within the project: ::
 
     paster create -t django myproject
 
 Install a new project
 =====================
 
-Once the project has been created by Buildout, it is autonomous of **epaster** and you can move it wherever you want. This is the process we recommend (i.e., do not keep it under the epaster tree).
+Once the project has been created by Buildout, it is autonomous of **Epaster** and you can move it wherever you want. This is the process we recommend (i.e., do not keep it under the Epaster tree).
 
 So, for a newly created project called ``myproject``, you will have to enter it in its directory and just execute the automatic install command from Makefile: ::
 
@@ -104,4 +104,4 @@ The `Gestus client`_ is embedded in all created projects, its config is automati
 
     gestus register
 
-Remember this should only be used in integration or production environment.
+Remember this should only be used in integration or production environment and you will have to fill a correct accounts in the ``EXTRANET`` part.

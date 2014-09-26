@@ -8,7 +8,7 @@
 Install
 *******
 
-This install procedure is designed for a virtual Python environment. The epaster tool will not be installed in your system’s Python environment to avoid conflicts or the crashing of Python modules in your system. It can be installed in this environment, but you will need to skip the virtualenv stage, which may create a risk.
+This install procedure is designed for a virtual Python environment. The Epaster tool will not be installed in your system’s Python environment to avoid conflicts or the crashing of Python modules in your system. It can be installed in this environment, but you will need to skip the virtualenv stage, which may create a risk.
 
 Requirements
 ============
@@ -31,27 +31,23 @@ If you plan to build the documentation (in ``docs`` directory) you will have to 
 Procedure
 =========
 
-When the required elements are installed, you will need to retrieve **epaster** from our **private GIT repository**: ::
+When the required elements are installed, you will need to retrieve **Epaster** from its `Github repository <https://github.com/emencia/Epaster>`_, install it and activate it: ::
 
-    gitolite@leto01.emencia.net:epaster.git
-
-Now enter into your **epaster** local copy directory and initialize your virtual environment: ::
-
-    virtualenv --no-site-packages --setuptools .
+    git clone git@github.com:emencia/Epaster.git
+    make install
     source bin/activate
 
-Then launch `buildout`_ to install epaster dependencies and its structure: ::
-
-    python bootstrap.py
-    buildout -v
-
-The ``buildout`` command will download all dependencies and install them in the virtual environment. If an error occurs, the buildout process will stop and print out the problem. You can correct it and relaunch the buildout process that will continue from the previous job.
+This will downloads all dependencies and install them in the virtual environment. If an error occurs, the buildout process will stop and print out the problem. You can correct it and relaunch the buildout process that will continue from the previous job.
 
 If the behavior seems uncertain, you can clean all the files installed and the directory using the dedicated Makefile feature: ::
 
     make clean
 
-When the buildout process is successfully completed, **epaster** is ready and you can use it to create new projects.
+When the buildout process is successfully completed, **Epaster** is ready and you can use it to create new projects.
+
+Additionaly if you have to make some development on Epaster (and/or edit its documentation and rebuild it) or its Paste templates, you will have to install its development environment, after the basic install just do: ::
+
+    buildout -c development.cfg
 
 Global config
 =============

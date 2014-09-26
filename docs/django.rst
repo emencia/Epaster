@@ -2,8 +2,9 @@
 .. _buildout: http://www.buildout.org/
 .. _virtualenv: http://www.virtualenv.org/
 .. _pip: http://www.pip-installer.org
-.. _Foundation: http://foundation.zurb.com/old-docs/f3/
-.. _Foundation Orbit: http://foundation.zurb.com/old-docs/f3/orbit.php
+.. _Foundation 3: http://foundation.zurb.com/old-docs/f3/
+.. _Foundation: http://foundation.zurb.com/
+.. _Foundation Orbit: http://foundation.zurb.com/orbit.php
 .. _modular-scale: https://github.com/scottkellum/modular-scale
 .. _Compass: http://compass-style.org/
 .. _SCSS: http://sass-lang.com/
@@ -50,6 +51,13 @@ django-instance
 
 This is the command installed to replace the ``manage.py`` script in Django. ``django-instance`` is aware of the installed eggs.
 
+Paste template version
+----------------------
+
+In your projects, you can find from which Paste template they have been builded in the 'project/__init__.py' file where you should find the used package name and its version.
+
+Note that previously (before the Epaster version 1.8), this file was containing the Epaster version, not the Paste template one, since the package didn't exists yet.
+
 How the Mods work
 -----------------
 
@@ -86,17 +94,21 @@ Foundation
 This project embeds `Foundation`_ 5 sources installed from the `Foundation`_ app so you can update it from the sources if needed (and if you have installed the Foundation cli, see its documentation for more details). If you update it, you need to synchronize the updated sources in the project's static files using a command in the Makefile: ::
 
     make syncf5
+    
+**You only have to do this when you want to synchronize the project's Foundation sources from the latest Foundation release. Commonly this is reserved for Epaster developers.**
 
 This will update the Javascript sources in the static files, but make sure that it cleans the directory first. Never put your files in the ``project/webapp_statics/js/foundation5`` directory or they will be deleted. Be aware that the sources update will give you some file prefixed with a dot like ``.gitignore``, you must rename all of them like this ``+dot+gitignore``, yep the dot character have to be renamed to ``+dot+``, else it will cause troubles with GIT and Epaster. There is a python script named ``fix_dotted_filename.py`` in the source directory, use it to automatically apply this renaming.
 
 For the `Foundation`_ SCSS sources, no action is required; they are imported directly into the compass config.
 
-The project also embeds *Foundation 3* sources (they are used for some components in Django administration). You do not have to worry about them.
+The project also embeds `Foundation 3`_ sources (they are used for some components in Django administration) but you don't have to worry about them.
 
 RVM
 ---
 
 `rvm`_ is somewhat like what `virtualenv`_ is to Python: a virtual environment. The difference is that it is intended for the parallel installation of a number of different versions of **Ruby** without mixing the gems (the **Ruby** application packages). In our scenario, it allows you to install a recent version of **Ruby** without affecting your system installation.
+
+This is not required, just an usefull cheat to know when developing on a server with an old distribution.
 
 Installation and initial use
 ============================
@@ -132,6 +144,8 @@ Currently a new project installs the following (at least):
 * `ckeditor`_ for the editor used with `Django CMS`_ and `Django Blog Zinnia`_;
 
 If you do not want to use these components, you will need to manually disable them in your settings and the project's main ``urls.py``.
+
+Also, there is a lot of mods that needs some private key, email adresses, services accounts, etc.. to be filled to works. Like 'contact_form' that needs to know a recipient email where it can send notifications. So after a first install remember to watch your mod settings to see if they need some datas to fill.
 
 accounts
 --------
@@ -229,6 +243,14 @@ site_metas
 ----------
 
 Enable a module in ``settings.TEMPLATE_CONTEXT_PROCESSORS`` to show a few variables linked to `Django sites app`_ in the context of the project views template.
+
+Common context available variables are:
+
+* ``SITE.name``: Current *Site* entry name;
+* ``SITE.domain``: Current *Site* entry domain;
+* ``SITE.web_url``: The Current *Site* entry domain prefixed with the http protocol like ``http://mydomain.com``. If HTTPS is enabled 'https' will be used instead of 'http';
+
+Some projects can change this to add some other variables, you can see for them in ``project.utils.context_processors.get_site_metas``.
 
 sitemap
 -------
