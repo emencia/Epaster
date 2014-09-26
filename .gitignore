@@ -1,0 +1,18 @@
+*.pyc
+
+# vim
+.*.swp
+
+# virtualenv
+bin
+include
+lib
+lib64
+local
+
+# buildout
+*.egg-info
+.installed.cfg
+develop-eggs
+eggs
+src

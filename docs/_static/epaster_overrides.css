@@ -1,0 +1,10 @@
+h1, .h1 {
+    font-weight: 600;
+}
+h2, .h2 {
+    font-weight: 400;
+}
+
+.graphviz{
+    text-align: center;
+}
