@@ -1,0 +1,2 @@
+# Paste templates
+emencia-paste-django==1.8.2

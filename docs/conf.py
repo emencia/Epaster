@@ -12,9 +12,10 @@
 # serve to show the default.
 
 import datetime, sys, os
-#import sphinx_bootstrap_theme
 from subprocess import Popen, PIPE
+import emencia_paste_django
 
+# Try to guess the version from the git tags
 def get_version():
     popen = Popen(['git', 'describe', '--tags'], stdout=PIPE, stderr=PIPE, cwd=os.path.abspath(os.path.dirname(__file__)))
     out, err = popen.communicate()
@@ -30,6 +31,11 @@ epaster_version = get_version()
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #sys.path.insert(0, os.path.abspath('.'))
 
+# It's a little tricky: we add the project dir sources from the Django templates 
+# to be able to use autodoc on the mods
+project_path = os.path.join(os.path.dirname(emencia_paste_django.__file__), 'django_buildout/project')
+sys.path.append(project_path)
+
 # -- General configuration -----------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -38,6 +44,7 @@ epaster_version = get_version()
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 extensions = [
+    'sphinx.ext.autodoc',
     'sphinx.ext.graphviz',
 ]
 

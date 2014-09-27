@@ -32,6 +32,7 @@
 .. _crispy-forms-foundation: https://github.com/sveetch/crispy-forms-foundation
 .. _emencia-django-slideshows: https://github.com/emencia/emencia-django-slideshows
 .. _emencia-django-staticpages: https://github.com/emencia/emencia-django-staticpages
+.. _emencia-django-socialaggregator: https://github.com/emencia/emencia-django-socialaggregator
 .. _django-urls-map: https://github.com/sveetch/django-urls-map
 .. _Sitemap framework: https://docs.djangoproject.com/en/1.5/ref/contrib/sitemaps/
 
@@ -132,165 +133,146 @@ The first action required is the creation of a CMS page for the home page and yo
 Available components
 ====================
 
-Below is a list (non-exhaustive) of all the components available to create a new project.
-
-Currently a new project installs the following (at least):
-
-* `google_tools`_;
-* `assets`_ to manage the assets;
-* `cms`_ for `Django CMS`_;
-* `codemirror`_ for the editor used in `Django CMS`_'s *snippet* plugin;
-* `filebrowser`_ to manage the media uploaded in the CMS pages;
-* `ckeditor`_ for the editor used with `Django CMS`_ and `Django Blog Zinnia`_;
-
-If you do not want to use these components, you will need to manually disable them in your settings and the project's main ``urls.py``.
-
-Also, there is a lot of mods that needs some private key, email adresses, services accounts, etc.. to be filled to works. Like 'contact_form' that needs to know a recipient email where it can send notifications. So after a first install remember to watch your mod settings to see if they need some datas to fill.
+.. automodule:: mods_available
+    :members:
 
 accounts
 --------
 
-Enable `Django registration`_ and everything you need to allow users to request registration and to connect/disconnect. The views and forms are added so this part can be used. 
-
-It includes:
-
-* A view for the login and one for the logout;
-* All the views for the registration request (request, confirmation, etc.);
-* A view to ask for the reinitialization of a password.
-
-In the ``skeleton.html`` template, a partial HTML code is commented. Uncomment it to display the *logout* button when the user is connected.
-
-The registration process consists in sending an email (to be configured in the settings) with the registration request to an administrator responsible for accepting them (or not). Once validated, an email is sent to the user to confirm his registration by way of a link. Once this step has been completed, the user can connect.
+.. automodule:: mods_available.accounts
+    :members:
 
 admin_tools
 -----------
 
-Enable `django-admin-tools`_ to enhance the administration interface. This enables three widgets to customize certain elements. `filebrowser`_ is used, so if your project has not enabled it, you need to remove the occurrences of these widgets.
+.. automodule:: mods_available.admin_tools
+    :members:
 
 assets
 ------
 
-Enable `django-assets`_ to combine and minify your *assets* (CSS, JS). The minification library used, *yuicompressor*, requires the installation of Java (the OpenJDK installed by default on most Linux systems is sufficient).
-
-In general, this component is required. If you do not intend to use it, you will need to modify the project's default templates to remove all of its occurrences.
+.. automodule:: mods_available.assets
+    :members:
 
 ckeditor
 --------
 
-Enable the customization of the `CKEditor`_ editor. It is enabled by default and used by `Django CKEditor`_ in the `cms`_ mod, and also in `zinnia`_.
+.. automodule:: mods_available.ckeditor
+    :members:
 
 cms
 ---
 
-`Django CMS`_ allows for the creation and management of the content pages that constitute your site's tree structure. By default, this component enables the use of `filebrowser`_, `Django CKEditor`_ and `emencia-cms-snippet`_ (a clone of the snippets' plugin with a few improvements).
-
-By default it is configured to use only one language. See its ``urls.py`` to find out how to enable the management of multiple languages.
+.. automodule:: mods_available.cms
+    :members:
 
 codemirror
 ----------
 
-Enable `Django Codemirror`_ to apply the editor with syntax highlighting in your forms (or other content). It is used by the snippet's CMS plugin.
+.. automodule:: mods_available.codemirror
+    :members:
 
 contact_form
 ------------
 
-A simple contact form that is more of a standard template than a full-blown application. You can modify it according to your requirements in its ``apps/contact_form/`` directory. Its HTML rendering is managed by `crispy_forms`_ based on a customized layout.
-
-By default, it uses the `recaptcha`_ mods.
+.. automodule:: mods_available.contact_form
+    :members:
 
 crispy_forms
 ------------
 
-Enable the use of `django-crispy-forms`_ and `crispy-forms-foundation`_. **crispy_forms** is used to manage the HTML rendering of the forms in a finer and easier fashion than with the simple Django form API. **crispy-forms-foundation** is a supplement to implement the rendering with the structure (tags, styles, etc.) used in `Foundation`_.
+.. automodule:: mods_available.crispy_forms
+    :members:
 
 debug_toolbar
 -------------
 
-Add `django-debug-toolbar`_ to your project to insert a tab on all of your project's HTML pages, which will allow you to track the information on each page, such as the template generation path, the  query arguments received, the number of SQL queries submitted, etc.
+.. automodule:: mods_available.debug_toolbar
+    :members:
 
-This component can only be used in a development or integration environment and is always disabled during production.
+emencia_utils
+-------------
 
-Note that its use extends the response time of your pages and can provokes some mysterious bugs (like with syncdb or zinnia) so for the time being, this mods is disabled. So enable it locally for your needs, but never commit its enabled mod and remember to disable it when you have a strange bug.
+.. automodule:: mods_available.emencia_utils
+    :members:
 
 filebrowser
 -----------
 
-Add `Django Filebrowser`_ to your project so you can use a centralized interface to manage the uploaded files to be used with other components (`cms`_, `zinnia`_, etc.).
-
-The version used is a special version called *no grappelli* that can be used outside of the *django-grapelli* environment.
+.. automodule:: mods_available.filebrowser
+    :members:
 
 flatpages
 ---------
 
-Enable the use of `Django flatpages app`_ in your project. Once it has been enabled, go to the ``urls.py`` in this mod to configure the *map* of the urls to be used.
+.. automodule:: mods_available.flatpages
+    :members:
 
 google_tools
 ------------
 
-Add `django-google-tools`_ to your project to manage the tags for *Google Analytics* and *Google Site Verification* from the site administration location.
+.. automodule:: mods_available.google_tools
+    :members:
 
 pdb
 ---
 
-Add `Django PDB`_ to your project for more precise debugging with breakpoints. N.B. Neither ``django_pdb`` nor ``pdb`` are installed by the buildout. You must install them manually, for example with `pip`_, in your development environment so you do not disrupt the installation of projects being integrated or in production. You must also add the required breakpoints yourself.
+.. automodule:: mods_available.pdb
+    :members:
 
 porticus
 --------
 
-Add `Django Porticus`_ to your project to manage file galleries.
-
-site_metas
-----------
-
-Enable a module in ``settings.TEMPLATE_CONTEXT_PROCESSORS`` to show a few variables linked to `Django sites app`_ in the context of the project views template.
-
-Common context available variables are:
-
-* ``SITE.name``: Current *Site* entry name;
-* ``SITE.domain``: Current *Site* entry domain;
-* ``SITE.web_url``: The Current *Site* entry domain prefixed with the http protocol like ``http://mydomain.com``. If HTTPS is enabled 'https' will be used instead of 'http';
-
-Some projects can change this to add some other variables, you can see for them in ``project.utils.context_processors.get_site_metas``.
-
-sitemap
--------
-
-This mod use the Django's `Sitemap framework`_ to publish the ``sitemap.xml`` for various apps. The default config contains ressources for DjangoCMS, Zinnia, staticpages, contact form and Porticus but only ressource for DjangoCMS is enabled.
-
-Uncomment ressources or add new app ressources for your needs (see the Django documentation for more details).
-
-slideshows
-----------
-
-Enable the `emencia-django-slideshows`_ app to manage slide animations (slider, carousel, etc.). This was initially provided for `Foundation Orbit` and *Royal Slider*, but can be used with other libraries if needed.
-
-staticpages
------------
-
-This mod uses `emencia-django-staticpages`_ to use static pages with a direct to template process, it replace the deprecated mod *prototype*.
+.. automodule:: mods_available.porticus
+    :members:
 
 recaptcha
 ---------
 
-Enable the `Django reCaptcha`_ module to integrate a field of the *captcha* type via the `Service reCaptcha`_. This integration uses a special template and CSS to make it *responsive*.
+.. automodule:: mods_available.recaptcha
+    :members:
 
-**N.B.**
+site_metas
+----------
 
-If you do in fact use this module, go to its mods setting file (or that of your environment) to fill in the public key and the private key to be used to transmit the data required.
+.. automodule:: mods_available.site_metas
+    :members:
 
-By default, these keys are filled in with a *fake* value and the captcha's form field therefore sends back a silent error (a message is inserted into the form without creating a Python *Exception*).
+sitemap
+-------
 
-urlmap
-------
+.. automodule:: mods_available.sitemap
+    :members:
 
-`django-urls-map`_ is a tiny Django app to embed a simple management command that will display the url map of your project.
+slideshows
+----------
+
+.. automodule:: mods_available.slideshows
+    :members:
+
+socialaggregator
+----------------
+
+.. automodule:: mods_available.socialaggregator
+    :members:
+
+staticpages
+-----------
+
+.. automodule:: mods_available.staticpages
+    :members:
+
+urlsmap
+-------
+
+.. automodule:: mods_available.urlsmap
+    :members:
 
 zinnia
 ------
 
-`Django Blog Zinnia`_ allows for the management of a blog in your project. It is perfectly integrated into the `cms`_ component but can also be used independently.
-
-At the time of installation, an automatic patch (that can be viewed in the ``patches/`` directory) is applied to it to implement the use of `ckeditor`_, which is enabled by default in its settings.
+.. automodule:: mods_available.zinnia
+    :members:
 
 Languages not supported with Django
 ===================================
