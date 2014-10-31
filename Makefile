@@ -13,7 +13,7 @@ delpyc:
 	find . -name "*\.pyc"|xargs rm -f
 
 clean: delpyc 
-	rm -Rf bin docs/_build include eggs lib parts develop-eggs .installed.cfg local src
+	rm -Rf bin docs/_build include eggs lib parts develop-eggs .installed.cfg local
 
 install:
 	virtualenv --no-site-packages --setuptools .

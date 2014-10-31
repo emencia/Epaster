@@ -3,7 +3,8 @@
 .. _Python Paste: http://pythonpaste.org/
 .. _buildout: http://www.buildout.org/
 .. _Django: https://www.djangoproject.com/
-.. _emencia-paste-django: https://github.com/emencia/emencia-paste-django
+.. _emencia_paste_djangocms_2: https://github.com/emencia/emencia_paste_djangocms_2
+.. _emencia_paste_djangocms_3: https://github.com/emencia/emencia_paste_djangocms_3
 
 Epaster
 =======
@@ -12,6 +13,11 @@ Epaster
 
 Its goal is to automatically create and initialize the project’s structure so you don't lose time assembling the different parts.
 
-For now, it is only used to build `Django`_ projects through the `emencia-paste-django`_ package.
+For now, it is only used to build `Django`_ projects through the `emencia_paste_djangocms_2`_ package.
+
+There is two available *paste* :
+
+* `emencia_paste_djangocms_2`_ for DjangoCMS 2.x;
+* `emencia_paste_djangocms_3`_ for DjangoCMS 3.x;
 
 `Read the documentation on Read the Docs <http://epaster.readthedocs.org/en/latest/>`_.
