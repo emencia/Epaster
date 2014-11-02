@@ -13,7 +13,7 @@
 
 import datetime, sys, os
 from subprocess import Popen, PIPE
-import emencia_paste_django
+import emencia_paste_djangocms_2
 
 # Try to guess the version from the git tags
 def get_version():
@@ -33,7 +33,7 @@ epaster_version = get_version()
 
 # It's a little tricky: we add the project dir sources from the Django templates 
 # to be able to use autodoc on the mods
-project_path = os.path.join(os.path.dirname(emencia_paste_django.__file__), 'django_buildout/project')
+project_path = os.path.join(os.path.dirname(emencia_paste_djangocms_2.__file__), 'django_buildout/project')
 sys.path.append(project_path)
 
 # -- General configuration -----------------------------------------------------

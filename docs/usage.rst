@@ -28,6 +28,8 @@ will display a list of available project types which you can create: ::
       django:         Django project
       paste_deploy:   A web application deployed through paste.deploy
 
+This is just a sample, your install may have different paste.
+
 Create a new project
 ====================
 
@@ -53,26 +55,6 @@ Then if you need to use a specific config, execute it as follows: ::
     buildout -c production.cfg
 
 Generally, the database type used is **sqlite3**, stored in a ``database.sqlite3`` file at the root directory of your project.
-
-Error with setuptools
----------------------
-
-Sometimes (when the version of your installed setuptools is too old), ``python bootstrap.py`` raises an error such as: ::
-
-    Traceback (most recent call):
-    File "bootstrap.py", line 159, in <module>
-        ws.require(requirement)
-    File "/home/django/Emencia/epaster/toto/lib/python2.6/site-packages/distribute-0.6.34-py2.6.egg/pkg_resources.py", line 696, in require
-        needed = self.resolve(parse_requirements(requirements))
-    File "/home/django/Emencia/epaster/toto/lib/python2.6/site-packages/distribute-0.6.34-py2.6.egg/pkg_resources.py", line 594, in resolve
-        raise DistributionNotFound(req)
-    pkg_resources.DistributionNotFound: setuptools>=0.7
-
-because the virtual environment inherits it from the setuptools installed on your system. You can fix it manually as follows: ::
-
-    pip install --upgrade setuptools
-
-Note that this is not required if you follow the ``make install`` command procedure.
 
 Makefile actions
 ================

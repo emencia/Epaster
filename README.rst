@@ -13,8 +13,6 @@ Epaster
 
 Its goal is to automatically create and initialize the project’s structure so you don't lose time assembling the different parts.
 
-For now, it is only used to build `Django`_ projects through the `emencia_paste_djangocms_2`_ package.
-
 There is two available *paste* :
 
 * `emencia_paste_djangocms_2`_ for DjangoCMS 2.x;

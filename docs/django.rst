@@ -114,7 +114,7 @@ This is not required, just an usefull cheat to know when developing on a server 
 Installation and initial use
 ============================
 
-Once your project has been created with this epaster template, you need to install it to use it. The process is simple. Do it in your project directory (for example ``toto``): ::
+Once your project has been created with this epaster template, you need to install it to use it. The process is simple. Do it in your project directory: ::
 
     make install
 
@@ -133,152 +133,9 @@ The first action required is the creation of a CMS page for the home page and yo
 Available components
 ====================
 
-.. automodule:: mods_available
-    :members:
 
-accounts
---------
+.. toctree::
+   :maxdepth: 1
 
-.. automodule:: mods_available.accounts
-    :members:
-
-admin_tools
------------
-
-.. automodule:: mods_available.admin_tools
-    :members:
-
-assets
-------
-
-.. automodule:: mods_available.assets
-    :members:
-
-ckeditor
---------
-
-.. automodule:: mods_available.ckeditor
-    :members:
-
-cms
----
-
-.. automodule:: mods_available.cms
-    :members:
-
-codemirror
-----------
-
-.. automodule:: mods_available.codemirror
-    :members:
-
-contact_form
-------------
-
-.. automodule:: mods_available.contact_form
-    :members:
-
-crispy_forms
-------------
-
-.. automodule:: mods_available.crispy_forms
-    :members:
-
-debug_toolbar
--------------
-
-.. automodule:: mods_available.debug_toolbar
-    :members:
-
-emencia_utils
--------------
-
-.. automodule:: mods_available.emencia_utils
-    :members:
-
-filebrowser
------------
-
-.. automodule:: mods_available.filebrowser
-    :members:
-
-flatpages
----------
-
-.. automodule:: mods_available.flatpages
-    :members:
-
-google_tools
-------------
-
-.. automodule:: mods_available.google_tools
-    :members:
-
-pdb
----
-
-.. automodule:: mods_available.pdb
-    :members:
-
-porticus
---------
-
-.. automodule:: mods_available.porticus
-    :members:
-
-recaptcha
----------
-
-.. automodule:: mods_available.recaptcha
-    :members:
-
-site_metas
-----------
-
-.. automodule:: mods_available.site_metas
-    :members:
-
-sitemap
--------
-
-.. automodule:: mods_available.sitemap
-    :members:
-
-slideshows
-----------
-
-.. automodule:: mods_available.slideshows
-    :members:
-
-socialaggregator
-----------------
-
-.. automodule:: mods_available.socialaggregator
-    :members:
-
-staticpages
------------
-
-.. automodule:: mods_available.staticpages
-    :members:
-
-urlsmap
--------
-
-.. automodule:: mods_available.urlsmap
-    :members:
-
-zinnia
-------
-
-.. automodule:: mods_available.zinnia
-    :members:
-
-Languages not supported with Django
-===================================
-
-If you want to use a locale name that Django is not aware of, when you enable it in your settings file within the ``LANGUAGES`` setting, you will see bad behaviors or even Django errors.
-
-This is because Django is not aware of the locale name you give it, probably because it does not have a translation catalog for it. You can add it yourself by *monkey patching* Django. You need to add your locale config in ``$DJANGO_EGG/django/conf/locale/__init__.py`` and, if needed, (for example, if you add a locale for an untranslated language), add the translation catalog (PO file) in ``$DJANGO_EGG/django/conf/locale/``. To make it easier, simply copy a catalog that exists already (such as *en*) and paste it along with the name of your new locale.
-
-Finally you have to include this monkey patch within the buildout install process. The best process is to use a diff file with the buildout diff recipe. You can find a sample of this in the buildout parts called ``patch-django-locale-part01`` and ``patch-django-locale-part02``. The first applies the patch; the second one compiles the PO file. This is only required if you add a new PO file.
+   emencia_paste_djangocms_2.rst
+   emencia_paste_djangocms_3.rst

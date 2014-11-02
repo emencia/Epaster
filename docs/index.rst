@@ -4,6 +4,7 @@
 .. _Emencia: http://www.emencia.com/
 .. _Python Paste: http://pythonpaste.org/
 .. _buildout: http://www.buildout.org/
+.. _pip: http://www.pip-installer.org
 .. _Django: https://www.djangoproject.com/
 .. _emencia-paste-django: https://github.com/emencia/emencia-paste-django
 
@@ -17,7 +18,9 @@ Introduction
 
 Its goal is to automatically create and initialize the project’s structure so you don't lose time assembling the different parts.
 
-For now, it is only used to build `Django`_ projects through the `emencia-paste-django`_ package.
+Epaster is not really a package, just a `buildout`_ project to assemble some apps to develop `Python Paste`_ templates (called a *paste*). In theory, you should be able to install these paste just with `virtualenv`_ and `pip`_, but Epaster assemble all our paste in a unique `buildout`_ project.
+
+For now, it is only used to build `Django`_ projects through some paste packages.
 
 Structure
 ---------
@@ -90,5 +93,6 @@ Table of contents
 
    install.rst
    usage.rst
-   django.rst
+   emencia_paste_djangocms_2.rst
+   emencia_paste_djangocms_3.rst
    history.rst
