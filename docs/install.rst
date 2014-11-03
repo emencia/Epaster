@@ -35,7 +35,7 @@ Procedure
 
 When the required elements are installed, you will need to retrieve **Epaster** from its `Github repository <https://github.com/emencia/Epaster>`_, install it and activate it: ::
 
-    git clone git@github.com:emencia/Epaster.git
+    git clone https://github.com/emencia/Epaster.git
     make install
     source bin/activate
 
