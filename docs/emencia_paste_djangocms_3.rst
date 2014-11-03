@@ -12,7 +12,7 @@
 .. _Django: https://www.djangoproject.com/
 .. _django-admin-tools: https://bitbucket.org/izi/django-admin-tools/
 .. _Django CMS: https://www.django-cms.org/
-.. _django-assets: http://elsdoerfer.name/docs/django-assets/
+.. _django-assets: https://github.com/miracle2k/django-assets/
 .. _django-debug-toolbar: https://github.com/django-debug-toolbar/django-debug-toolbar/
 .. _Django Blog Zinnia: https://github.com/Fantomas42/django-blog-zinnia
 .. _Django CKEditor: https://github.com/divio/djangocms-text-ckeditor/
@@ -150,7 +150,7 @@ You can then use the project on the development server: ::
         Note the ``:8001`` that mean "bind the server on this port", this is a required part when you specify an IP. Commonly you can't bind on the port 80 so allways prefer to use a port starting from *8001*.
 
 .. note::
-        If you don't know your local IP, you can use ``127.0.0.1`` that is an internal alias to mean "my own network card", but this IP cannot be reached from other computers (because they have also this alias linked to your own network card).
+        If you don't know your local IP, you can use ``127.0.0.1`` that is an internal alias to mean "my own network card", but this IP cannot be reached from other computers (because they have also this alias linked to their own network card).
 
 The first required action is the creation of a CMS page for the home page and also you should fill-in the site's name and its domain under ``Administration > Sites > Sites > Add site``.
 

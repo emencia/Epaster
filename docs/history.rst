@@ -8,6 +8,45 @@ History
 Changelog
 =========
 
+Version 2.1 - 03/11/2014
+------------------------
+
+* Update to ``zc.buildout==2.2.4`` to fix a bug introduced in 2.2.3;
+* Update to last ``bootstrap.py`` script;
+* Update to ``emencia_paste_djangocms_3==1.1``;
+
+emencia_paste_djangocms_3 version 1.1
+.....................................
+
+* Update to ``zc.buildout==2.2.4`` to fix a bug introduced in 2.2.3;
+* Update to last ``bootstrap.py`` script;
+* Remove Foundation3 sources, CSS and bundles, they are not used anymore;
+* Move ckeditor and minimalist CSS to common SCSS sources with Foundation5;
+* Update Compass README;
+* Correct admin_style Compass config;
+* Add 'ar' country to the CSS flags;
+* Recompile all CSS in project's webapp_statics;
+* Changing ``assets.py`` to use nested bundles, so we can separate app bundles (foundation, royalslider, etc..) from the main bundles where we load the app bundles;
+* Main frontend's CSS & JS bundles are now called ``main.css`` and ``main.js`` not anymore ``app.***`` (yes we use the old Foundation3 ones that have been removed);
+
+Version 2.0 - 02/11/2014
+------------------------
+
+* Implement new pastes for djangocms 2.x and 3.x
+* Update doc to fit to the new structure
+
+Version 1.8.2 - 27/09/2014
+--------------------------
+
+* Update docs to get the mods documentation directly from their docstring (in their __init__.py);
+* Add eggedpy build part;
+
+Version 1.8.1 - 26/09/2014
+--------------------------
+
+* Add Development environnment, close #2;
+* Try to fix 'Doc compile fail on rtd', fix #1;
+
 Version 1.8 - 25/09/2014
 ------------------------
 

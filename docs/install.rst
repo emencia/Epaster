@@ -8,7 +8,9 @@
 Install
 *******
 
-This install procedure is designed for a virtual Python environment. The Epaster tool will not be installed in your system’s Python environment to avoid conflicts or the crashing of Python modules in your system. It can be installed in this environment, but you will need to skip the virtualenv stage, which may create a risk.
+This install procedure is designed for a virtual Python environment. The Epaster tool will not be installed in your system’s Python environment to avoid conflicts or the crashing of Python modules in your system.
+
+It is possible to install Epaster in your system’s Python environment but you will need to skip the virtualenv stage, which may create a risk.
 
 Requirements
 ============
