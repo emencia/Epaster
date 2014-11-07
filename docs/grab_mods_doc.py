@@ -40,24 +40,27 @@ for paste_app in (emencia_paste_djangocms_2, emencia_paste_djangocms_3):
     app_document.write(".. _intro_{0}:".format(app_name))
     app_document.write('\n')
     
-    # Get the doc from the base __init__
-    mod_index = import_module_from_path(modsdir_path, '__init__')
-    app_document.write(mod_index.__doc__.strip())
-    app_document.write('\n\n')
-    
     # Scan available mods
+    mods_document = []
     for directory in sorted(os.listdir(modsdir_path)):
         mod_abs = os.path.join(modsdir_path, directory)
         if os.path.isdir(mod_abs):
             # mod title
-            app_document.write(directory)
-            app_document.write('\n')
-            app_document.write("-"*len(directory))
-            app_document.write('\n\n')
+            mods_document.append(directory)
+            mods_document.append('\n')
+            mods_document.append("-"*len(directory))
+            mods_document.append('\n\n')
             # mod content
             mod = import_module_from_path(modsdir_path, directory)
-            app_document.write(mod.__doc__.strip())
-            app_document.write('\n\n')
+            mods_document.append(mod.__doc__.strip())
+            mods_document.append('\n\n')
+    mods_document = ''.join(mods_document)
+    
+    # Get the doc from the base __init__ and replace its 
+    # pattern '.. document-mods::' by the mods documentations
+    mod_index = import_module_from_path(modsdir_path, '__init__')
+    app_document.write(mod_index.__doc__.strip().replace('.. document-mods::', mods_document))
+    app_document.write('\n\n')
             
     fp = open(document_name, 'w')
     fp.write(app_document.getvalue())
