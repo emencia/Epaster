@@ -8,6 +8,13 @@ History
 Changelog
 =========
 
+Version 2.1.2 - 2014/11/16
+--------------------------
+
+* Update to ``emencia_paste_djangocms_3==1.1.2``;
+* Add "Development" notes in the docs;
+* Update documentation;
+
 Version 2.1.1 - 2014/11/07
 --------------------------
 

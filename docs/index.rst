@@ -74,8 +74,9 @@ Finally, Epaster will build you a project that is designed to be use with some s
             color=lightgrey;
             fontcolor="lightslategray";
             node [style=filled,color=white];
-            scss -> foundation;
             label = "Compass";
+            
+            scss -> foundation;
         }
         
         /* Root entities */
@@ -95,4 +96,5 @@ Table of contents
    usage.rst
    emencia_paste_djangocms_2.rst
    emencia_paste_djangocms_3.rst
+   develop.rst
    history.rst
