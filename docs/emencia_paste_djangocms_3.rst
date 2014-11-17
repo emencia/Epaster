@@ -384,6 +384,11 @@ zinnia
 Changelogs
 ==========
 
+Version 1.1.3 - 2014/11/17
+--------------------------
+
+* Mount 500 and 404 page view in urls.py when debug mode is activated;
+
 Version 1.1.2 - 2014/11/16
 --------------------------
 
