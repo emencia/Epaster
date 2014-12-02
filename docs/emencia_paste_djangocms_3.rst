@@ -38,6 +38,8 @@
 .. _djangocms-admin-style: https://github.com/divio/djangocms-admin-style
 .. _django-admin-shortcuts: https://github.com/alesdotio/django-admin-shortcuts/
 .. _django-sendfile: https://github.com/johnsensible/django-sendfile
+.. _django-filer: https://github.com/stefanfoulis/django-filer
+.. _easy-thumbnails: https://github.com/SmileyChris/easy-thumbnails/
 
 *******************
 DjangoCMS 3.x paste
@@ -280,6 +282,13 @@ Filebrowser manage files with a nice interface to centralize them and also manag
 .. note::
         Don't try to use other resizing app like sorl-thumbnails or easy-thumbnails, they will not work with Image fields managed with Filebrowser.
 
+filer
+-----
+
+Mod for `django-filer`_ and its DjangoCMS plugin
+
+Only enable it for specific usage because this can painful to manage files with Filebrowser and django-filer enabled in the same project.
+
 flatpages
 ---------
 
@@ -392,6 +401,13 @@ staticpages
 
 This mod uses `emencia-django-staticpages`_ to use static pages with a direct to template process, it replace the deprecated mod *prototype*.
 
+thumbnails
+----------
+
+Mod for `easy-thumbnails`_ a library to help for making thumbnails on the fly (or not).
+
+Commonly this is don't really usefull, as by default we enable Filebrowser that allready ship a thumbnail system.
+
 urlsmap
 -------
 
@@ -406,6 +422,18 @@ zinnia
 
 Changelogs
 ==========
+
+Version 1.2.3 - 2014/12/02
+--------------------------
+
+* Improve ``sitemap`` mod, more modular and usefull;
+* Add ``filer`` and ``thumbnails`` mod, ususally not used in our projects but it could be usefull for some specific goals;
+* Fix contact_form app that was missing its ``sitemap.py`` file;
+* Update to ``crispy-forms-foundation==0.4``;
+* DjangoCMS page templates has moved from ``project/templates/cms`` to ``project/templates/pages``, following a recommandation from DjangoCMS' documentation;
+* Add ``menu/menu_sidenav.html`` and ``pages/2_cols.autonav.html`` templates to have a template with deep menu for current root page;
+* Update to ``porticus==0.9.6``;
+* Update to ``emencia-django-slideshows==0.9.4``;
 
 Version 1.2.2 - 2014/11/24
 --------------------------

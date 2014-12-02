@@ -96,5 +96,6 @@ Table of contents
    usage.rst
    emencia_paste_djangocms_2.rst
    emencia_paste_djangocms_3.rst
+   tips.rst
    develop.rst
    history.rst
