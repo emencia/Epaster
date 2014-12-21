@@ -2,6 +2,8 @@
 .. _buildout: http://www.buildout.org/
 .. _virtualenv: http://www.virtualenv.org/
 .. _Sphinx: http://sphinx-doc.org/
+.. _Foundation 3: http://foundation.zurb.com/old-docs/f3/
+.. _Foundation: http://foundation.zurb.com/
 
 ***********
 Development
@@ -43,3 +45,18 @@ Symlinks
 You can't include symlinks into your paste templates, because Distribute ignore them, they won't be packaged and so won't be available in the paste's installed egg.
 
 If you need to create some symlinks in the projects to build, you will have to do it in the paste template in ``templates.py``. The ``emencia_paste_djangocms_3`` paste has generic way to do this, just append a tuple to the list ``emencia_paste_djangocms_3.templates.Django.symlink_list`` where the tuple contains the *target* (a relative path to the file/directory to link to) and the symlink file to create (an absolute path into the project to build).
+
+Foundation updates
+==================
+
+This project embeds `Foundation`_ 5 sources installed from the `Foundation`_ app so you can update it from the sources if needed (and if you have installed the Foundation cli, see its documentation for more details). If you update it, you need to synchronize the updated sources in the project's static files using a command in the Makefile: ::
+
+    make syncf5
+    
+**You only have to do this when you want to synchronize the project's Foundation sources from the latest Foundation release. Commonly this is reserved for Epaster maintainers.**
+
+This will update the Javascript sources in the static files, but make sure that it cleans the directory first. Never put your files in the ``project/webapp_statics/js/foundation5`` directory or they will be deleted. Be aware that the sources update will give you some file prefixed with a dot like ``.gitignore``, you must rename all of them like this ``+dot+gitignore``, yep the dot character have to be renamed to ``+dot+``, else it will cause troubles with GIT and Epaster. There is a python script named ``fix_dotted_filename.py`` in the source directory, use it to automatically apply this renaming.
+
+For the `Foundation`_ SCSS sources, no action is required; they are imported directly into the compass config.
+
+The project also embeds `Foundation 3`_ sources (they are used for some components in Django administration) but you don't have to worry about them, they are fixed to the last stable release ``3.2.5``.

@@ -4,8 +4,6 @@
 .. _pip: http://www.pip-installer.org
 .. _Foundation 3: http://foundation.zurb.com/old-docs/f3/
 .. _Foundation: http://foundation.zurb.com/
-.. _Foundation Orbit: http://foundation.zurb.com/orbit.php
-.. _modular-scale: https://github.com/scottkellum/modular-scale
 .. _Compass: http://compass-style.org/
 .. _SCSS: http://sass-lang.com/
 .. _rvm: http://rvm.io/
@@ -75,7 +73,9 @@ This is the command installed to replace the ``manage.py`` script in Django. ``d
 Paste template version
 ----------------------
 
-In your projects, you can find from which Paste template they have been builded in the 'project/__init__.py' file where you should find the used package name and its version.
+In your projects, you can find from which Paste template they have been builded in the ``project/__init__.py`` file where you should find the used package name and its version. So you can easily see the version doing something like : ::
+
+    cat project/__init__.py
 
 Note that previously (before the Epaster version 1.8), this file was containing the Epaster version, not the Paste template one, since the package didn't exists yet.
 
@@ -87,49 +87,6 @@ The advantage of centralizing app configurations in their mods is the project's 
 To create a new mods, create a directory in ``$PROJECT/mods_avalaible/`` that contains at least one empty ``__init__.py`` and a ``settings.py`` to build the app in the project and potentially its settings. The `settings.py`` and ``urls.py`` files in this directory will be executed automatically by the project (the system loads them after the project ones so that a mods can overwrite the project's initial settings and urls). N.B. With Django's ``runserver`` command, a change to these files does not reload the project instance; you need to relaunch it yourself manually.
 
 To enable a new mods, you need to create its symbolic link (**a relative path**) in ``$PROJECT/mods_enabled``. To disable it, simply delete the symbolic link.
-
-Compass
-=======
-
-`Compass`_ is a **Ruby** tool used to compile `SCSS`_ sources in **CSS**.
-
-By default, a Django project has its `SCSS`_ sources in the ``compass/scss/`` directory. The CSS `Foundation`_ framework is used as the database.
-
-A recent install of Ruby and Compass is required first for this purpose (see `RVM`_ if your system installation is not up to date).
-
-Once installed, you can then compile the sources on demand. Simply go to the ``compass/`` directory and launch this command: ::
-
-    compass compile
-
-When you are working uninterruptedly on the sources, you can simply launch the following command: ::
-
-    compass watch
-
-`Compass`_ will monitor the directory of sources and recompile the modified sources automatically.
-
-By default the ``compass/config.rb`` configuration file (the equivalent of `settings.py`` in Django) is used. If needed, you can create another one and specify it to `Compass`_ in its command (for more details, see the documentation).
-
-Foundation
-----------
-
-This project embeds `Foundation`_ 5 sources installed from the `Foundation`_ app so you can update it from the sources if needed (and if you have installed the Foundation cli, see its documentation for more details). If you update it, you need to synchronize the updated sources in the project's static files using a command in the Makefile: ::
-
-    make syncf5
-    
-**You only have to do this when you want to synchronize the project's Foundation sources from the latest Foundation release. Commonly this is reserved for Epaster developers.**
-
-This will update the Javascript sources in the static files, but make sure that it cleans the directory first. Never put your files in the ``project/webapp_statics/js/foundation5`` directory or they will be deleted. Be aware that the sources update will give you some file prefixed with a dot like ``.gitignore``, you must rename all of them like this ``+dot+gitignore``, yep the dot character have to be renamed to ``+dot+``, else it will cause troubles with GIT and Epaster. There is a python script named ``fix_dotted_filename.py`` in the source directory, use it to automatically apply this renaming.
-
-For the `Foundation`_ SCSS sources, no action is required; they are imported directly into the compass config.
-
-The project also embeds `Foundation 3`_ sources (they are used for some components in Django administration) but you don't have to worry about them.
-
-RVM
----
-
-`rvm`_ is somewhat like what `virtualenv`_ is to Python: a virtual environment. The difference is that it is intended for the parallel installation of a number of different versions of **Ruby** without mixing the gems (the **Ruby** application packages). In our scenario, it allows you to install a recent version of **Ruby** without affecting your system installation.
-
-This is not required, just an usefull cheat to know when developing on a server with an old distribution.
 
 Installation and initial use
 ============================
@@ -422,6 +379,14 @@ zinnia
 
 Changelogs
 ==========
+
+Version 1.2.4 - 2014/12/19
+--------------------------
+
+* Add Foundation's *kitchen sink* in a staticpage within ``project/templates/prototypes/foundation5.html`` and mounted on ``/prototypes/foundation5.html``;
+* Add template tag library named ``utils_addons`` in ``project/utils/templatetags/``;
+* Add ``split`` filter in ``utils_addons`` template tag library;
+* Add nginx conf for admin with timeout and max body size increase;
 
 Version 1.2.3 - 2014/12/02
 --------------------------

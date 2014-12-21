@@ -8,6 +8,12 @@ History
 Changelog
 =========
 
+Version 2.1.6 - 2014/12/19
+--------------------------
+
+* Update to ``emencia_paste_djangocms_3==1.2.4``;
+* Update documentation to rename the tips section as the topics section, then improve it a little bit;
+
 Version 2.1.5 - 2014/12/01
 --------------------------
 

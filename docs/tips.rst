@@ -1,12 +1,51 @@
 .. _intro_tips:
 .. _buildout: http://www.buildout.org/
+.. _virtualenv: http://www.virtualenv.org/
+.. _Foundation 3: http://foundation.zurb.com/old-docs/f3/
+.. _Foundation: http://foundation.zurb.com/
+.. _Compass: http://compass-style.org/
+.. _SCSS: http://sass-lang.com/
+.. _rvm: http://rvm.io/
 .. _icomoon: http://icomoon.io/
+.. _django-assets: http://django-assets.readthedocs.org/en/latest/
+.. _webassets: http://webassets.readthedocs.org/en/latest/
+.. _yuicompressor: http://yui.github.io/yuicompressor/
  
-**************************
-Common tips around Epaster
-**************************
+****************************
+Common topics around Epaster
+****************************
 
-There are some topics around some things we use in Epaster environnment.
+There are some topics around some things we use in Epaster environnment. 
+
+Note that these topics are based on **emencia_paste_djangocms_3**, but generally they will apply also to **emencia_paste_djangocms_2**.
+
+Compass
+=======
+
+`Compass`_ is a **Ruby** tool used to compile `SCSS`_ sources in **CSS**.
+
+By default, a Django project has its `SCSS`_ sources in the ``compass/scss/`` directory. The CSS `Foundation`_ framework is used as the database.
+
+A recent install of Ruby and Compass is required first for this purpose (see `RVM`_ if your system installation is not up to date).
+
+Once installed, you can then compile the sources on demand. Simply go to the ``compass/`` directory and launch this command: ::
+
+    compass compile
+
+When you are working uninterruptedly on the sources, you can simply launch the following command: ::
+
+    compass watch
+
+`Compass`_ will monitor the directory of sources and recompile the modified sources automatically.
+
+By default the ``compass/config.rb`` configuration file (the equivalent of `settings.py`` in Django) is used. If needed, you can create another one and specify it to `Compass`_ in its command (for more details, see the documentation).
+
+RVM
+---
+
+`rvm`_ is somewhat like what `virtualenv`_ is to Python: a virtual environment. The difference is that it is intended for the parallel installation of a number of different versions of **Ruby** without mixing the gems (the **Ruby** application packages). In our scenario, it allows you to install a recent version of **Ruby** without affecting your system installation.
+
+This is not required, just an usefull cheat to know when developing on a server with an old distribution.
 
 Webfonts
 ========
@@ -92,3 +131,69 @@ And put the pasted icon class names after this pattern.
 
 Finally in ``compass/scss/app.scss`` search for the line containing ``@import "components/icomoon";`` and uncomment it, now you can compile your SCSS and the webfont icons will be available from your ``app.css`` file.
 
+Assets management
+=================
+
+Why
+---
+
+In the past, assets management was painful with some projects, because their includes was often divided in many different templates. This causing issues like to update some library or retrieve effective code that was working on some template by inherit.
+
+Also, this often results in pages loading dozen of asset files and sometime much more. This is a really bad behavior because it slows page loading and add useless performance charge on the web server.
+
+This is why we use an **asset manager** within Epaster: `django-assets`_ which is a subproject of `webassets`_. Firstly read the `webassets`_ documentation to understand how is working its **Bundle** system. Then you can read the `django-assets`_ that is only related about Django usage with the settings, templatetags, etc..
+
+How it works
+------------
+
+Asset managers generally perform two tasks :
+
+* Regroup some kind of files together, like regrouping all Javascript files in an unique file;
+* Minimize the file weight with removing useless white spaces to have the code on unique line;
+
+Some asset manager implement this with their own file processor, some other like `webassets`_ are just "glue" between the files and another dedicated *compiler* like `yuicompressor`_.
+
+Environments
+------------
+
+Asset management is really useful within integration or production environments and so when developing, the manager is generally disabled and the files are never compiled, you can verify this with looking at your page's source code.
+
+make assets
+-----------
+
+Epaster pastes have a ``make assets`` command that is useful **on integration and production environment** to deploy update on your assets. In fact **this command is always required in these environments** when you deploy a new update where assets have changed. Also you should never use it on development environment because it can cause you many troubles.
+
+What does this command :
+
+#. Collecting all static files from your project and installed apps to your ``settings.STATIC_ROOT`` directory;
+#. Use `django-assets`_ to *compile* all defined bundles using previously collected files;
+#. Re-collecting static files again to collect the compiled bundle files;
+
+Static files directories
+------------------------
+
+In your ``settings.py`` file you should see :
+
+..  sourcecode:: python
+    
+    STATIC_ROOT = join(PROJECT_PATH, 'static')
+
+It define the *front* static file directory. But **never put yourself a file in this directory**, it is **reserved** for collected files in **integration and production environment** only.
+
+All static files sources will go in the ``project/webapp_statics`` directory, it is defined in the *assets* mod :
+
+..  sourcecode:: python
+    
+    ASSETS_ROOT = join(PROJECT_PATH, 'webapp_statics/')
+    STATICFILES_DIRS += (ASSETS_ROOT,)
+
+This way we allways have separated directories for the sources and the compiled files. This is required to never commit compiled files and avoid conflict between development and production.
+
+The rule
+--------
+
+Never, ever, put CSS stylesheets in your templates, NEVER. You can forget it, this will go in production and forgeted for a long time, this can be painful for other developers that coming after you. So **always add CSS stylesheets by the way of SCSS sources** using `Compass`_.
+
+For Javascript code this is different, sometime we need to generate some code using Django templates for some specific cases. But if you use a same Javascript code in more than one template (using inheriting or so), you must move the code to a Javascript file.
+
+Developers should never have to search in templates to change some CSS or Javascript code that is used in more than one page.
