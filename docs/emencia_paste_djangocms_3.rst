@@ -38,6 +38,8 @@
 .. _django-sendfile: https://github.com/johnsensible/django-sendfile
 .. _django-filer: https://github.com/stefanfoulis/django-filer
 .. _easy-thumbnails: https://github.com/SmileyChris/easy-thumbnails/
+.. _Dr Dump: https://github.com/emencia/dr-dump
+.. _emencia-recipe-drdump: https://github.com/emencia/emencia-recipe-drdump
 
 *******************
 DjangoCMS 3.x paste
@@ -379,6 +381,11 @@ zinnia
 
 Changelogs
 ==========
+
+Version 1.2.5 - 2014/12/25
+--------------------------
+
+* Add config for `emencia-recipe-drdump`_ recipe for `Dr Dump`_;
 
 Version 1.2.4 - 2014/12/19
 --------------------------

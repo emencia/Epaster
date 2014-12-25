@@ -180,7 +180,7 @@ In your ``settings.py`` file you should see :
 
 It define the *front* static file directory. But **never put yourself a file in this directory**, it is **reserved** for collected files in **integration and production environment** only.
 
-All static files sources will go in the ``project/webapp_statics`` directory, it is defined in the *assets* mod :
+All static files sources will go in the ``project/webapp_statics`` directory, it is defined in the *assets* mod:
 
 ..  sourcecode:: python
     
@@ -197,3 +197,30 @@ Never, ever, put CSS stylesheets in your templates, NEVER. You can forget it, th
 For Javascript code this is different, sometime we need to generate some code using Django templates for some specific cases. But if you use a same Javascript code in more than one template (using inheriting or so), you must move the code to a Javascript file.
 
 Developers should never have to search in templates to change some CSS or Javascript code that is used in more than one page.
+
+Developing application
+======================
+
+Sometimes, you will need to develop some new app package or improve them without to embed them within the project.
+
+You have two choices to do that:
+
+* Use ``develop`` buildout variable to simply add your app to the developped apps, your app have to exists at the root of buildout project;
+* Use ``vcs-extend-develop`` buildout variable to define a repository URL to the package sources;
+
+Even they have the same base name *develop*, these two ways are differents:
+
+* The first one simply add a symbolic link to the package in your Python install without to manage it as an installed eggs, it will be accessible as a Python module installed in the Python virtual environment. This method does not require that your app have a repository or have been published on PyPi;
+* The second one install the targeted package from a given repository instead of a downloaded package from PyPi, it act like an installed eggs but from which you can edit the source and publish to the repository. And so your app name have to be defined in the buildout's egg variable, buildout will see it in ``vcs-extend-develop`` and will not try to install it from PyPi but from the given repository url;
+
+In all ways, your apps is allways a full package structure that mean this is not a simple Python module, but its package structure containing stuff like ``README`` file and ``setup.py`` at the base of the directory then the Python module containing the code. Trying to use a simple Python module as a develop app will not work.
+
+Which one to use and when
+-------------------------
+
+* If you want to **develop a new package**, it's often much faster to create its package directory structure at the root of your buildout project then use it within ``develop``. You would move it to ``vcs-extend-develop`` when you have published it;
+* If you want to **develop an allready published package**, you will use ``vcs-extend-develop`` with its repository url, this so you will be able to edit it, commit changes then publish it;
+
+Most of Emencia's apps are allready setted within ``vcs-extend-develop`` in the buildout config for development environment (``development.cfg``) but disabled, just uncomment the needed one.
+
+Take care, an Egg that is installed from a repository url is validated on its version number if defined in the ``versions.cfg``, and so if your develop egg contains a version number less than the one defined in ``versions.cfg``, buildout will try to get the most recent version from PyPi, so allways manage the app version number.

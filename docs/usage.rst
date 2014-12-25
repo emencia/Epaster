@@ -2,6 +2,8 @@
 .. _buildout: http://www.buildout.org/
 .. _virtualenv: http://www.virtualenv.org/
 .. _Gestus client: https://github.com/sveetch/Gestus-client
+.. _Dr Dump: https://github.com/emencia/dr-dump
+.. _emencia-recipe-drdump: https://github.com/emencia/emencia-recipe-drdump
 
 *****
 Usage
@@ -87,3 +89,19 @@ The `Gestus client`_ is embedded in all created projects, its config is automati
     gestus register
 
 Remember this should only be used in integration or production environment and you will have to fill a correct accounts in the ``EXTRANET`` part.
+
+Dr Dump
+=======
+
+`Dr Dump`_ is an utility to help you to dump and load datas from your Django project's apps. It does not have any command line interface, just a buildout recipe (`emencia-recipe-drdump`_) that will generate some bash scripts (``datadump`` and ``dataload``) in your ``bin`` directory so you can use them directly to dump your data into a ``dumps`` directory.
+
+If the recipe is enabled in your buildout config (this is the default behavior), its bash scripts will be generated again each time you invoke a buildout.
+
+Buildout will probably remove your dumps directory each time it re-install Dr Dump and Dr Dump itself will overwrite your dumped data files each time you invoke it dump script. So remember backup your dumps before doing this.
+
+Note that Dr Dump can only manage app that it allready know in the used map, if you have some other packaged app or project's app that is not defined in the map you want to use, you have two choices :
+
+* Ask to a repository manager of Dr Dump to add your apps, for some *exotic* it will probably be refused;
+* Download the map from the repository, embed it in your buildout project and give its path into the ``dependancies_map`` recipe variable so it will use it.
+
+The second one is the most easy and flexible, but you will have to manage yourself the map to keep it up-to-date with the original one.

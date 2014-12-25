@@ -8,6 +8,12 @@ History
 Changelog
 =========
 
+Version 2.1.7 - 2014/12/25
+--------------------------
+
+* Update to ``emencia_paste_djangocms_3==1.2.5``;
+* Update documentation to add some informations about *Dr Dump* in 'Usage' document;
+
 Version 2.1.6 - 2014/12/19
 --------------------------
 
