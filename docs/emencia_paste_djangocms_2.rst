@@ -344,6 +344,11 @@ At the time of installation, an automatic patch (that can be viewed in the ``pat
 Changelogs
 ==========
 
+Version 1.9.6.1 - 2014/12/26
+----------------------------
+
+* Fix a damned bug with ``bootstrap.py`` that was forcing to upgrade to ``setuptools=0.8`` that seems to results with bad parsing on some constraints like the one from django-cms for ``django-mptt==0.5.2,==0.6,==0.6.1`` that was causing a buildout fail on conflict version. This has been fixed with updating to the last ``bootstrap.py`` and use its command line arguments to fix versions for ``zc.buildout`` and ``setuptools`` in the Makefile;
+
 Version 1.9.6 - 2014/11/17
 --------------------------
 

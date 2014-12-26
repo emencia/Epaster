@@ -17,7 +17,8 @@ clean: delpyc
 
 install:
 	virtualenv --no-site-packages --setuptools .
-	bin/pip install --upgrade setuptools
+	bin/pip install 'setuptools==7.0'
+	bin/pip install 'pip==1.5.6'
 	mkdir -p eggs
-	bin/python bootstrap.py
+	bin/python bootstrap.py --setuptools-version=7.0 --config-file=buildout.cfg --version=2.2.5
 	bin/buildout -v

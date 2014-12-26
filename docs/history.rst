@@ -8,6 +8,13 @@ History
 Changelog
 =========
 
+Version 2.1.8 - 2014/12/26
+--------------------------
+
+* Update to ``emencia_paste_djangocms_2==1.9.6.1``;
+* Update to ``emencia_paste_djangocms_3==1.2.6``;
+* Backport fix from them to the Epaster Makefile to avoid any bugs;
+
 Version 2.1.7 - 2014/12/25
 --------------------------
 
