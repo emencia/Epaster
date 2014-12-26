@@ -8,6 +8,11 @@ History
 Changelog
 =========
 
+Version 2.1.8.1 - 2014/12/26
+----------------------------
+
+* Fix: Forgotted to update ``bootstrap.py`` in previous version;
+
 Version 2.1.8 - 2014/12/26
 --------------------------
 
