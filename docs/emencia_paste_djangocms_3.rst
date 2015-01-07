@@ -382,6 +382,14 @@ zinnia
 Changelogs
 ==========
 
+Version 1.2.7 - 2015/01/06
+--------------------------
+
+* Update to ``django==1.6.9``;
+* Update to ``django-cms==3.0.7``;
+* Update to ``Pillow==2.7.0``;
+* In buildout config, remove the old patch hack to add unsupported locales from Django, since Django 1.6 does not care anymore;
+
 Version 1.2.6 - 2014/12/26
 --------------------------
 
