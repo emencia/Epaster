@@ -365,7 +365,7 @@ thumbnails
 
 Mod for `easy-thumbnails`_ a library to help for making thumbnails on the fly (or not).
 
-Commonly this is don't really usefull, as by default we enable Filebrowser that allready ship a thumbnail system.
+Generally **this is not recommended**, because by default we allready enable Filebrowser that allready ships a `thumbnail system <http://django-filebrowser.readthedocs.org/en/latest/versions.html>`_.
 
 urlsmap
 -------
@@ -381,6 +381,15 @@ zinnia
 
 Changelogs
 ==========
+
+Version 1.2.8 - 2015/01/14
+--------------------------
+
+* Update to ``django==1.6.10``;
+* Update to ``django-cms==3.0.9``;
+* Fix default slideshow template with a bad html id;
+* Add a Makefile in foundation5 sources, move syncf5 action into it and add a syncjquery to fix compressed jquery in foundation5 vendor sources that was causing issue with compressed assets;
+* Add CMS apphook sample for contact_form;
 
 Version 1.2.7 - 2015/01/06
 --------------------------

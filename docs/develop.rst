@@ -49,14 +49,20 @@ If you need to create some symlinks in the projects to build, you will have to d
 Foundation updates
 ==================
 
-This project embeds `Foundation`_ 5 sources installed from the `Foundation`_ app so you can update it from the sources if needed (and if you have installed the Foundation cli, see its documentation for more details). If you update it, you need to synchronize the updated sources in the project's static files using a command in the Makefile: ::
+.. warning::
+        To do this, you must have a strong knowing of Foundation sources structure
+        
+        You only have to do this when you want to synchronize the project's Foundation sources from the latest Foundation release. This is reserved for Epaster maintainers.
+
+This project embeds `Foundation`_ 5 sources installed from the `Foundation`_ app so you can update it from the sources if needed (and if you have installed the Foundation cli, see its documentation for more details). to update these sources go into its directory and use it Makefile action: ::
+
+    make update
+
+.. warning::
+    Never manually put your files in the ``project/webapp_statics/js/foundation5`` directory or they will be deleted.
+
+Then you have to checkup that directories structure has not changed, if it so you must fix the ``syncf5`` and ``syncjquery`` actions. When it's done, do: ::
 
     make syncf5
-    
-**You only have to do this when you want to synchronize the project's Foundation sources from the latest Foundation release. Commonly this is reserved for Epaster maintainers.**
 
-This will update the Javascript sources in the static files, but make sure that it cleans the directory first. Never put your files in the ``project/webapp_statics/js/foundation5`` directory or they will be deleted. Be aware that the sources update will give you some file prefixed with a dot like ``.gitignore``, you must rename all of them like this ``+dot+gitignore``, yep the dot character have to be renamed to ``+dot+``, else it will cause troubles with GIT and Epaster. There is a python script named ``fix_dotted_filename.py`` in the source directory, use it to automatically apply this renaming.
-
-For the `Foundation`_ SCSS sources, no action is required; they are imported directly into the compass config.
-
-The project also embeds `Foundation 3`_ sources (they are used for some components in Django administration) but you don't have to worry about them, they are fixed to the last stable release ``3.2.5``.
+For the SCSS sources, no action is required; they are imported directly into the compass config.
