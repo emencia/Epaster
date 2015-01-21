@@ -382,6 +382,13 @@ zinnia
 Changelogs
 ==========
 
+Version 1.2.9 - 2015/01/20
+--------------------------
+
+Changing default behavior of *Asset bundles* in ``project/assets.py`` so now bundle urls will be like ``/static/screen.acefe50.css`` instead of old behavior ``/static/screen.min.css?acefe50`` that was causing issue with old proxies caches (see `webassets documentation <http://webassets.readthedocs.org/en/latest/expiring.html#expire-using-the-filename>`_);
+
+You can safely backport this change to your old projects, this should be transparent to your install and won't require any server change.
+
 Version 1.2.8 - 2015/01/14
 --------------------------
 
