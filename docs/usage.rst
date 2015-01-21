@@ -2,6 +2,7 @@
 .. _buildout: http://www.buildout.org/
 .. _virtualenv: http://www.virtualenv.org/
 .. _Gestus client: https://github.com/sveetch/Gestus-client
+.. _PO-Projects client: https://github.com/sveetch/PO-Projects-client
 .. _Dr Dump: https://github.com/emencia/dr-dump
 .. _emencia-recipe-drdump: https://github.com/emencia/emencia-recipe-drdump
 
@@ -81,10 +82,51 @@ Where ``ACTION`` is the command action to use, as follows: ::
 
     make install
 
+PO-Projects
+===========
+
+The `PO-Projects client`_ is pre-configured in all created projects but disabled by default. When enabled, its config file is automatically generated (in ``po_projects.cfg``), don't edit it because it will be regenerated each time buildout is used.
+
+**It aims to ease PO translations management** between developpers and translation managers. 
+
+The principe is that **developpers and translators does not have anymore to directly exchange PO files**. The developpers update the PO to the translation project on PO-Project webservice, translators update translations on PO-Project service frontend and developpers can get updated PO from the webservice.
+
+To use it, you will have first to enable it in the buildout config, to install the client package, fill the webservice access and buildout part. Then when it's done, you have to create a project on PO-Project webservice using its frontend, then each required language for translation using the same locale names that the ones defined in the project settings.
+
+There is only two available actions from the client :
+
+Push action
+    The ``push`` action role is to send updated PO (from Django extracts) from the project to the PO-Project webservice.
+    
+    Technically, the client will archive the locale directory into a tarball then send it to the webservice, that will use it to update its stored PO for each defined locales.
+    
+    Common way is (from the root of your project): ::
+    
+        cd project
+        django-instance makemessages -a
+        cd ..
+        po_projects push
+
+
+Pull action
+    The ``pull`` action role is to get the updated translations from the webservice and install into the project.
+    
+    Technically, the client will download a tarball of the latest locale translations from the webservice and deploy it to your project, note that it will totally overwrite the project's locale directory. The compile PO (``*.mo`` files) are lost during this action and so each time you use this action you will have to recompile them.
+    
+    Common way is (from the root of your project): ::
+    
+        po_projects pull
+        
+    And probably reload your webserver.
+
+Note that the client does not manage your repository, each time you change your PO files (from Django ``makemessages`` action or ``pull`` client action) you still have to commit them.
+
 Gestus
 ======
 
-The `Gestus client`_ is embedded in all created projects, its config is automatically generated (in ``gestus.cfg``). You can register your environment with the following command : ::
+The `Gestus client`_ is pre-configured in all created projects, its config file is automatically generated (in ``gestus.cfg``), don't edit it because it will be regenerated each time buildout is used.
+
+You can register your environment with the following command : ::
 
     gestus register
 
@@ -101,7 +143,7 @@ Buildout will probably remove your dumps directory each time it re-install Dr Du
 
 Note that Dr Dump can only manage app that it allready know in the used map, if you have some other packaged app or project's app that is not defined in the map you want to use, you have two choices :
 
-* Ask to a repository manager of Dr Dump to add your apps, for some *exotic* it will probably be refused;
+* Ask to a repository manager of Dr Dump to add your apps, for some *exotic* or uncommon apps it will probably be refused;
 * Download the map from the repository, embed it in your buildout project and give its path into the ``dependancies_map`` recipe variable so it will use it.
 
 The second one is the most easy and flexible, but you will have to manage yourself the map to keep it up-to-date with the original one.
