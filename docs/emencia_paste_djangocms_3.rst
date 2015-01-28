@@ -382,6 +382,12 @@ zinnia
 Changelogs
 ==========
 
+Version 1.3.0 - 2015/01/28
+--------------------------
+
+* Update to ``django-filer==0.9.9`` to fix a bug with ``setuptools>=7`` (this should permits soon to remove freezing to setuptools==7 and pip==1.5.x);
+* Remove "syncf5" action in Makefile because now it resides in a Makefile into foundation5's sources;
+
 Version 1.2.9 - 2015/01/20
 --------------------------
 

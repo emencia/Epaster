@@ -70,7 +70,6 @@ A Makefile is shipped within a project to include some useful maintenance comman
 * ``delpyc``: to remove all ``*.pyc`` files, this is recursive from the current directory;
 * ``assets``: to minify all assets and collect static files;
 * ``scss``: to compile all SCSS elements with compass;
-* ``syncf5``: to synchronize required Javascript files from foundation5 sources dir to the project static files;
 
 It is only used from its location as follows.
 
