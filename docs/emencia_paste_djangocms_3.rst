@@ -382,6 +382,13 @@ zinnia
 Changelogs
 ==========
 
+Version 1.3.1 - 2015/01/28
+--------------------------
+
+* Fix a bug in project/contact_form/cms_app that was using the wrong hook name;
+* Remove sample patch for Django and unknown locales because since 1.6, Django does not care about known or unknown locale;
+* Disable 'sitemap.xml' mapping to a static files in the nginx config since we have a mod to generate it automatically from enabled apps;
+
 Version 1.3.0 - 2015/01/28
 --------------------------
 
