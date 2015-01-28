@@ -344,6 +344,13 @@ At the time of installation, an automatic patch (that can be viewed in the ``pat
 Changelogs
 ==========
 
+Version 1.9.8 - 2015/01/28
+--------------------------
+
+* Fix webassets bug: since we use Bundle names with version placeholder, webassets needed a manifest file to know what version to use in its templatetags. So now a ``webassets.manifest`` file is created in ``project/webapp_statics`` directory and will be copied to ``project/static`` dir when assets are deployed;
+
+This will be the last maintenance release, don't expect any other update for this package.
+
 Version 1.9.7 - 2015/01/20
 --------------------------
 

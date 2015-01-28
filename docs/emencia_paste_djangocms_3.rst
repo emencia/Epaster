@@ -382,6 +382,12 @@ zinnia
 Changelogs
 ==========
 
+Version 1.3.2 - 2015/01/28
+--------------------------
+
+* Comment settings.ADMINS so we are not sending anymore Django's mail alerts to @dummy.com..;
+* Fix webassets bug: since we use Bundle names with version placeholder, webassets needed a manifest file to know what version to use in its templatetags. So now a ``webassets.manifest`` file is created in ``project/webapp_statics`` directory and will be copied to ``project/static`` dir when assets are deployed;
+
 Version 1.3.1 - 2015/01/28
 --------------------------
 
