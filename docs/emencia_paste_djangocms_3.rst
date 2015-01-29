@@ -382,6 +382,11 @@ zinnia
 Changelogs
 ==========
 
+Version 1.3.3 - 2015/01/29
+--------------------------
+
+* Use get_civility_display into contact_form app's email template rather civility;
+
 Version 1.3.2 - 2015/01/28
 --------------------------
 
