@@ -16,7 +16,7 @@ clean: delpyc
 	rm -Rf bin docs/_build include eggs lib parts develop-eggs .installed.cfg local
 
 install:
-	virtualenv --no-site-packages --setuptools .
+	virtualenv --no-site-packages --setuptools --python python2 .
 	bin/pip install 'setuptools==7.0'
 	bin/pip install 'pip==1.5.6'
 	mkdir -p eggs
