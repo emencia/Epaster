@@ -8,6 +8,12 @@ History
 Changelog
 =========
 
+Version 2.2.6 - 2015/02/03
+--------------------------
+
+* Force Python2.x usage in virtual environment from the Makefile because actually a lot of used apps can't works with Python3 and some distributions allready use Python3 as the default Python interpreter;
+* Update to ``emencia_paste_djangocms_3==1.3.4``;
+
 Version 2.2.5 - 2015/01/29
 --------------------------
 

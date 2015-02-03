@@ -382,6 +382,11 @@ zinnia
 Changelogs
 ==========
 
+Version 1.3.4 - 2015/02/03
+--------------------------
+
+* Force Python2.x usage in virtual environment from the Makefile because actually a lot of used apps can't works with Python3 and some distributions allready use Python3 as the default Python interpreter;
+
 Version 1.3.3 - 2015/01/29
 --------------------------
 
