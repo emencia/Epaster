@@ -382,6 +382,12 @@ zinnia
 Changelogs
 ==========
 
+Version 1.3.5 - 2015/02/06
+--------------------------
+
+* Use new options ``dump_other_apps`` and ``exclude_apps`` from emencia-recipe-drdump/drdump packages;
+* Add 2 new commands in makefile for export/import project data (database + media)
+
 Version 1.3.4 - 2015/02/03
 --------------------------
 
