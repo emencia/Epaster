@@ -382,6 +382,16 @@ zinnia
 Changelogs
 ==========
 
+Version 1.3.6 - 2015/02/25
+--------------------------
+
+* Fix rst typo into README file;
+* Remove project's apps locale dirs, close #7;
+* Fix missing ``django_comments`` in ``settings.INSTALLED_APPS``, required by zinnia else it cause a bug on some admin views, close #9;
+* Update to ``djangocms==3.0.10``;
+* Update to ``crispy-forms-foundation==0.4.1``;
+* Update to ``djangocms-admin-style==0.2.5``;
+
 Version 1.3.5 - 2015/02/06
 --------------------------
 
