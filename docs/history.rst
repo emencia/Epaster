@@ -8,6 +8,11 @@ History
 Changelog
 =========
 
+Version 2.2.8 - 2015/02/25
+--------------------------
+
+* Update to ``emencia_paste_djangocms_3==1.3.6``;
+
 Version 2.2.7 - 2015/02/07
 --------------------------
 
