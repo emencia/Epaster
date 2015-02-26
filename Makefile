@@ -1,3 +1,5 @@
+PYTHON2_PATH=`which python2`
+VIRTUALENV_PYTHON2_ARG= --python $(PYTHON2_PATH)
 
 .PHONY: help install clean delpyc
 
@@ -16,7 +18,7 @@ clean: delpyc
 	rm -Rf bin docs/_build include eggs lib parts develop-eggs .installed.cfg local
 
 install:
-	virtualenv --no-site-packages --setuptools --python python2 .
+	virtualenv --no-site-packages --setuptools $(VIRTUALENV_PYTHON2_ARG) .
 	bin/pip install 'setuptools==7.0'
 	bin/pip install 'pip==1.5.6'
 	mkdir -p eggs

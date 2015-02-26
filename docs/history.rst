@@ -8,6 +8,12 @@ History
 Changelog
 =========
 
+Version 2.2.9 - 2015/02/26
+--------------------------
+
+* Fix Makefile's 'install' action so this will works on all systems (OSX included) with a shell and Python2;
+* Update to ``emencia_paste_djangocms_3==1.3.7``;
+
 Version 2.2.8 - 2015/02/25
 --------------------------
 
