@@ -382,6 +382,17 @@ zinnia
 Changelogs
 ==========
 
+version 1.3.8 - 2015/02/27
+----------------------------
+
+* Add conf for sentry tracking in production env;
+* Fix bug into Makefile template;
+
+Version 1.3.7 - 2015/02/26
+--------------------------
+
+* Fix Makefile's 'install' action so this will works on all systems (OSX included) with a shell and Python2;
+
 Version 1.3.6 - 2015/02/25
 --------------------------
 
