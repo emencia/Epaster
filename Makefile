@@ -1,4 +1,4 @@
-PYTHON2_PATH=`which python2`
+PYTHON2_PATH=`which python2.7`
 VIRTUALENV_PYTHON2_ARG= --python $(PYTHON2_PATH)
 
 .PHONY: help install clean delpyc

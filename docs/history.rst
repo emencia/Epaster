@@ -8,6 +8,12 @@ History
 Changelog
 =========
 
+Version 2.3.1 - 2015/04/12
+--------------------------
+
+* Enforce python2.7 usage into Makefile (to avoid a bug with MacOSX);
+* Update to ``emencia_paste_djangocms_3==1.4.0``;
+
 Version 2.3.0 - 2015/02/27
 --------------------------
 

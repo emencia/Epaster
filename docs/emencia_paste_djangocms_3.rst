@@ -382,8 +382,17 @@ zinnia
 Changelogs
 ==========
 
+version 1.4.0 - 2015/04/12
+--------------------------
+
+* Enforce python2.7 usage into Makefile (to avoid a bug with MacOSX);
+* Update to ``django==1.6.11``;
+* Update to ``django-cms==3.0.12``;
+* Enable a default robots.txt in default and integration environments so development sites won't never be referenced;
+* Enforce to ``mptt==0.6.1`` to avoid a but third tier apps (like django-tagging) that accept superior versions not compatible with cms;
+
 version 1.3.8 - 2015/02/27
-----------------------------
+--------------------------
 
 * Add conf for sentry tracking in production env;
 * Fix bug into Makefile template;
